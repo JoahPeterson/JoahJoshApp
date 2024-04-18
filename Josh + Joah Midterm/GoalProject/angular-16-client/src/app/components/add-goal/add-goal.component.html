@@ -1,0 +1,37 @@
+<div>
+  <h1 class="text-center mb-4">Add Goal</h1>
+  <div class="submit-form">
+    <div *ngIf="!submitted">
+      <div class="form-group">
+        <label for="title">Title</label>
+        <input
+          type="text"
+          class="form-control"
+          id="title"
+          required
+          [(ngModel)]="goal.title"
+          name="title"
+        />
+      </div>
+
+      <div class="form-group">
+        <label for="description">Description</label>
+        <input
+          class="form-control"
+          id="description"
+          required
+          [(ngModel)]="goal.description"
+          name="description"
+        />
+      </div>
+
+      <button (click)="saveGoal()" class="btn btn-success">Submit</button>
+    </div>
+
+    <div *ngIf="submitted">
+      <h4>Goal was submitted successfully!</h4>
+      <a class="btn btn-success mr-5" routerLink="/goals">All Goals</a>
+      <button class="btn btn-success" (click)="newGoal()">Add</button>
+    </div>
+  </div>
+</div>

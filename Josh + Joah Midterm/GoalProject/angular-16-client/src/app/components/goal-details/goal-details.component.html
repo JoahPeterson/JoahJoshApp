@@ -1,0 +1,92 @@
+    <div *ngIf="viewMode; else editable">
+      <h3 class="text-center mt-4">Edit Goal</h3>
+      <div *ngIf="currentGoal.id">
+        <div>
+          <label><strong>Title:</strong></label> {{ currentGoal.title }}
+        </div>
+        <div>
+          <label><strong>Description:</strong></label>
+          {{ currentGoal.description }}
+        </div>
+        <div>
+          <label><strong>Status:</strong></label>
+          {{ currentGoal.completed ? "Completed" : "Not Completed" }}
+        </div>
+    
+        <a class="badge badge-warning"
+          routerLink="/goals/{{ currentGoal.id }}">
+          Edit
+        </a>
+      </div>
+    
+      <div *ngIf="!currentGoal">
+        <br />
+        <p>Please click on a Goal...</p>
+      </div>
+    </div>
+    
+    <ng-template #editable>
+      <h1 class="text-center mb-4">Edit Goal</h1>
+      <div *ngIf="currentGoal.id" class="edit-form">
+        <form>
+          <div class="form-group">
+            <label for="title"><strong>Title</strong></label>
+            <input
+              type="text"
+              class="form-control"
+              id="title"
+              [(ngModel)]="currentGoal.title"
+              name="title"
+            />
+          </div>
+          <div class="form-group">
+            <label for="description"><strong>Description</strong></label>
+            <input
+              type="text"
+              class="form-control"
+              id="description"
+              [(ngModel)]="currentGoal.description"
+              name="description"
+            />
+          </div>
+    
+          <div class="form-group">
+            <label><strong>Status:</strong></label>
+            {{ currentGoal.completed ? "Completed" : "Not Completed" }}
+          </div>
+        </form>
+    
+        <button
+          class="badge badge-primary mr-2"
+          *ngIf="currentGoal.completed"
+          (click)="updatePublished(false)"
+        >
+          Not Completed
+        </button>
+        <button
+          *ngIf="!currentGoal.completed"
+          class="badge badge-primary mr-2"
+          (click)="updatePublished(true)"
+        >
+          Complete
+        </button>
+    
+        <button class="badge badge-danger mr-2" (click)="deleteGoal()">
+          Delete
+        </button>
+    
+        <button
+          type="submit"
+          class="badge badge-success mb-2"
+          (click)="updateGoal()"
+        >
+          Update
+        </button>
+        <p>{{ message }}</p>
+      </div>
+    
+      <div *ngIf="!currentGoal.id">
+        <br />
+        <p>Cannot access this Goal...</p>
+      </div>
+    </ng-template>

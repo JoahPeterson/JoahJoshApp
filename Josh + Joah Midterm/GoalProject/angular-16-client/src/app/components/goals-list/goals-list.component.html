@@ -1,0 +1,45 @@
+<div class="list row">
+  <h4>Search Goal</h4>
+  <div class="col-md-8">
+    <div class="input-group mb-3">
+      <input
+        type="text"
+        class="form-control"
+        placeholder="Search by title"
+        [(ngModel)]="title"
+      />
+      <div class="input-group-append">
+        <button
+          class="btn btn-outline-secondary"
+          type="button"
+          (click)="searchTitle()"
+        >
+          Search
+        </button>
+      </div>
+    </div>
+  </div>
+  <div class="col-md-6">
+    <h3 class="text-center mt-4">Goals List</h3>
+    <ul class="list-group text-center">
+      <li
+        class="list-group-item text-center"
+        *ngFor="let goal of goals; let i = index"
+        [class.active]="i == currentIndex"
+        (click)="setActiveGoal(goal, i)"
+      >
+        {{ goal.title }}
+      </li>
+    </ul>
+
+    <button class="m-3 btn btn-sm btn-danger text-center" (click)="removeAllGoals()">
+      Remove All
+    </button>
+  </div>
+  <div class="col-md-6">
+    <app-goal-details
+      [viewMode]="true"
+      [currentGoal]="currentGoal"
+    ></app-goal-details>
+  </div>
+</div>

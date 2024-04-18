@@ -1,0 +1,25 @@
+/* Navbar */
+.navbar {
+    padding: 10px 20px; /* Adjust padding to reduce height */
+    background-color: #23395d
+}
+/* Navbar Brand */
+.navbar-brand {
+    font-size: 20px;
+    font-weight: bold;
+}
+
+/* Navbar Links */
+.navbar-nav .nav-item {
+    margin-right: 20px; /* Increase margin for more space between words */
+}
+
+.navbar-nav .nav-link {
+    color: #fff;
+    font-size: 16px;
+    transition: color 0.3s ease;
+}
+
+.navbar-nav .nav-link:hover {
+    color: #aaa;
+}
